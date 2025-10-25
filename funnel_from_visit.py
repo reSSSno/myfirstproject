@@ -1,5 +1,4 @@
 # Создаем словарь с данными о покупках из purchase_log.txt
-purchases = {}
 
 i = 0
 purchases = {}
