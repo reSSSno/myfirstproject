@@ -12,8 +12,8 @@ with open('/content/sample_data/purchase_log.txt', 'r', encoding='utf-8') as f:
             purchases[user_id] = category
 
 # Обрабатываем visit_log.csv построчно и записываем результат
-with open('/content/sample_data/visit_log.csv', 'r', encoding='utf-8') as visit_file, \
-     open('/content/sample_data/funnel.csv', 'w', encoding='utf-8') as funnel_file:
+with open('/content/sample_data/visit_log.csv', 'r', encoding='utf-8') as visit_file:
+  with open('/content/sample_data/funnel.csv', 'w', encoding='utf-8') as funnel_file:
     
     # Записываем заголовок
     header = visit_file.readline().strip()
@@ -29,3 +29,10 @@ with open('/content/sample_data/visit_log.csv', 'r', encoding='utf-8') as visit_
             if user_id in purchases:
                 category = purchases[user_id]
                 funnel_file.write(f'{line},{category}\n')
+
+
+#Проверка
+
+f = open('/content/sample_data/funnel.csv', 'r')
+
+f.readlines()
