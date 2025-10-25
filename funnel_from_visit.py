@@ -1,19 +1,21 @@
 # Создаем словарь с данными о покупках из purchase_log.txt
 purchases = {}
 
-with open('/content/sample_data/purchase_log.txt', 'r', encoding='utf-8') as f:
-    next(f)  # пропускаем заголовок
-    for line in f:
-        line = line.strip()
-        if line:
-            user_id, category = line.split('", "')
-            user_id = user_id.replace('"', '')
-            category = category.replace('"', '')
-            purchases[user_id] = category
+i = 0
+purchases = {}
+with open('/content/sample_data/purchase_log.txt') as f:
+  next(f)
+  for line in f:
+    slovar = json.loads(line)
+    #print(slovar.get('user_id')+" "+slovar.get('category'))
+    key1 = slovar.get('user_id')
+    key2 = slovar.get('category')
+    purchases[key1] = key2
+    i += 1
 
 # Обрабатываем visit_log.csv построчно и записываем результат
-with open('/content/sample_data/visit_log.csv', 'r', encoding='utf-8') as visit_file:
-  with open('/content/sample_data/funnel.csv', 'w', encoding='utf-8') as funnel_file:
+with open('/content/sample_data/visit_log.csv', 'r', encoding='utf-8') as visit_file, \
+     open('/content/sample_data/funnel.csv', 'w', encoding='utf-8') as funnel_file:
     
     # Записываем заголовок
     header = visit_file.readline().strip()
@@ -24,12 +26,11 @@ with open('/content/sample_data/visit_log.csv', 'r', encoding='utf-8') as visit_
         line = line.strip()
         if line:
             user_id, source = line.split(',')
-            
+
             # Проверяем, есть ли покупка у этого пользователя
-            if user_id in purchases:
+            if user_id == user_id in purchases:
                 category = purchases[user_id]
                 funnel_file.write(f'{line},{category}\n')
-
 
 #Проверка
 
