@@ -13,7 +13,7 @@ with open('/content/sample_data/purchase_log.txt') as f:
     i += 1
  
 #del(purchases['user_id'])
-print(purchases)
+#print(purchases)
 
 #Проверка
 n = 0
