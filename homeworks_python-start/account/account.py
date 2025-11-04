@@ -1,7 +1,21 @@
 from datetime import datetime
 
 class Account:
+    """
+    Банковский счет с историей операций и базовыми финансовыми операциями.
+    
+    Реализует основные функции банковского счета: управление балансом,
+    проведение операций и ведение полной истории транзакций.
+    """
     def __init__(self, account_holder: str, account_name, balance: float = 0.0):
+        """
+        Создает новый банковский счет.
+
+        Args:
+            account_holder: Владелец счета
+            account_name: Название счета
+            balance: Начальный баланс (по умолчанию 0.0)
+        """
         self.account_holder = account_holder
         self.account_name = account_name
         self.__balance = balance
