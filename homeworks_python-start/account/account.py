@@ -50,18 +50,20 @@ class Account:
             return "Сумма пополнения должна быть положительной"
 
     def withdraw(self, amount: float):
-        if self.__balance >= amount:
-            old_balance = self.__balance
-            self.__balance -= amount
-            operation = {
-                'type': 'withdraw',
-                'amount': amount,
-                'date_time': datetime.now(),
-                'balance_after': self.__balance,
-                'status': 'Success'
-            }
-            self.operations_history.append(operation)
-            return f"Снятие средств со счета на {amount}. Новый баланс: {self.__balance}"
+        """Снятие со счета"""
+        if amount > 0:
+            if amount <= self.__balance:
+                self.__balance -= amount
+                # Добавляем успешную операцию в историю
+                operation = {
+                    'type': 'withdraw',
+                    'amount': amount,
+                    'date_time': datetime.now(),
+                    'balance_after': self.__balance,
+                    'status': 'success'
+                }
+                self.operations_history.append(operation)
+                return f"Со счета снято {amount}. Новый баланс: {self.__balance}"
         else:
             # Записываем неудачную операцию
             operation = {
@@ -107,6 +109,7 @@ print(account.deposit(3000))
 print(account.withdraw(2000))
 print(account.withdraw(3000))
 print(account.deposit(-100))
+print(account.withdraw(-300))
 
 history = account.get_history()
 print("\nПолная история операций (сырые данные):")
