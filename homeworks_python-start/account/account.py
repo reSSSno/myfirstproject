@@ -69,6 +69,17 @@ class Account:
                 }
                 self.operations_history.append(operation)
                 return f"Снятие со счета {amount}. Новый баланс: {self.__balance}"
+            elif amount > self.__balance:
+                # Попытка снять деньги, если на балансе недостаточно денег
+                    operation = {
+                        'type': 'withdraw',
+                        'amount': amount,
+                        'date_time': datetime.now(),
+                        'balance_after': self.__balance,
+                        'status': 'Fail'
+                    }
+                    self.operations_history.append(operation)
+                    return "Недостаточно средств"
         else:
             # Записываем неудачную операцию
             operation = {
@@ -79,7 +90,7 @@ class Account:
                 'status': 'Fail'
             }
             self.operations_history.append(operation)
-            return "Недостаточно средств для снятия"
+            return "Неверная операция"
 
     def get_history(self):
         """
@@ -113,7 +124,6 @@ print(account.deposit(-3000))
 print(account.deposit(3000))
 print(account.withdraw(2000))
 print(account.withdraw(3000))
-print(account.deposit(-100))
 print(account.withdraw(-300))
 
 history = account.get_history()
