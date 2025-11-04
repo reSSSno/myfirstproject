@@ -25,6 +25,9 @@ class Account:
         return self.__balance
 
     def deposit(self, amount):
+        """
+        Пополнение счета
+        """
         if amount > 0:
             old_balance = self.__balance
             self.__balance += amount
@@ -50,7 +53,9 @@ class Account:
             return "Сумма пополнения должна быть положительной"
 
     def withdraw(self, amount: float):
-        """Снятие со счета"""
+        """
+        Снятие со счета
+        """
         if amount > 0:
             if amount <= self.__balance:
                 self.__balance -= amount
