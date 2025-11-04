@@ -85,13 +85,16 @@ class Account:
 """
 Проверка
 """
-account1 = Account("Иван Иванов", "Основной счет")
+account = Account("Иван Иванов", "Основной счет")
 
-print(account1.get_balance())
-print(account1.deposit(3000))
-print(account1.withdraw(2000))
+print(account.get_balance())
+print(account.deposit(-3000))
+print(account.deposit(3000))
+print(account.withdraw(2000))
+print(account.withdraw(3000))
+print(account.deposit(-100))
 
-history = account1.get_history()
+history = account.get_history()
 print("\nПолная история операций (сырые данные):")
 for operation in history:
     print(operation)
@@ -99,13 +102,19 @@ for operation in history:
 print("\n" + "="*50 + "\n")
 
 # Или в отформатированном виде
-print(account1.get_formatted_history())
+print(account.get_formatted_history())
 
 print("\n" + "="*50 + "\n")
 
-# Можно фильтровать историю
-successful_operations = [op for op in history if op['status'] == 'success']
-print(f"Успешных операций: {len(successful_operations)}")
+# Фильтрация истории
+successful_operations = [operation for operation in history if operation['status'] == 'Success']
+print(f"Успешных операций: {len(successful_operations)}")  # Должно быть 2
 
-deposits = [op for op in history if op['type'] == 'deposit' and op['status'] == 'success']
-print(f"Успешных пополнений: {len(deposits)}")
+deposits = [operation for operation in history if operation['type'] == 'deposit' and operation['status'] == 'Success']
+print(f"Успешных пополнений: {len(deposits)}")  # Должно быть 1
+
+withdrawals = [operation for operation in history if operation['type'] == 'withdraw' and operation['status'] == 'Success']
+print(f"Успешных снятий: {len(withdrawals)}")  # Должно быть 1
+
+failed_operations = [operation for operation in history if operation['status'] == 'Fail']
+print(f"Неудачных операций: {len(failed_operations)}")  # Должно быть 2
