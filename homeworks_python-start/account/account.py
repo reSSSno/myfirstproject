@@ -60,10 +60,10 @@ class Account:
                     'amount': amount,
                     'date_time': datetime.now(),
                     'balance_after': self.__balance,
-                    'status': 'success'
+                    'status': 'Success'
                 }
                 self.operations_history.append(operation)
-                return f"Со счета снято {amount}. Новый баланс: {self.__balance}"
+                return f"Снятие со счета {amount}. Новый баланс: {self.__balance}"
         else:
             # Записываем неудачную операцию
             operation = {
