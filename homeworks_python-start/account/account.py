@@ -1,13 +1,7 @@
 from datetime import datetime
 
 class Account:
-    """
-
-    """
     def __init__(self, account_holder: str, account_name, balance: float = 0.0):
-        """
-
-        """
         self.account_holder = account_holder
         self.account_name = account_name
         self.__balance = balance
