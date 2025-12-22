@@ -1,0 +1,24 @@
+{
+  "analysis_date": "2025-12-22 10:45:16",
+  "pcap_file": "/media/sf_share/dhcp.pcapng",
+  "statistics": {
+    "dhcp_discover": 0,
+    "dhcp_offer": 0,
+    "dhcp_request": 0,
+    "dhcp_ack": 0,
+    "total_packets": 4
+  },
+  "unique_ip_addresses": [
+    "0.0.0.0",
+    "255.255.255.255",
+    "192.168.0.1",
+    "192.168.0.10"
+  ],
+  "suspicious_activity": {
+    "dhcp": [],
+    "dns": []
+  },
+  "top_hostnames": {
+    "N/A": 4
+  }
+}
