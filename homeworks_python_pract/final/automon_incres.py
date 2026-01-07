@@ -331,10 +331,10 @@ class ThreatMonitor:
             response_actions.append(action)
             print(f"  [ДЕЙСТВИЕ] Изоляция системы: {threat['ip']}")
             
-        # Всегда отправляем уведомление администратору
+        # Всегда отправляем уведомление администратору. В поле target необходимо подставить свой mail.
         notification = {
             "action": "notify_security_team",
-            "target": "security_team@company.com",
+            "target": "megashark11@mail.ru",
             "message": f"Обнаружена угроза безопасности: {threat['type']} - {threat.get('reason', '')}",
             "timestamp": datetime.now().isoformat(),
             "details": {
