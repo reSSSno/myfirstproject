@@ -648,7 +648,7 @@ if __name__ == "__main__":
     config = Config()
     
     # Проверка обязательных настроек
-    if config.VIRUSTOTAL_API_KEY == "ВАШ_API_КЛЮЧ_ЗДЕСЬ":
+    if config.VIRUSTOTAL_API_KEY == "ВАШ_API_КЛЮЧ":
         print("ВНИМАНИЕ: Не установлен API ключ VirusTotal.")
         print("Для использования полного функционала получите ключ на https://www.virustotal.com/")
         print("и установите его в переменной VIRUSTOTAL_API_KEY.")
